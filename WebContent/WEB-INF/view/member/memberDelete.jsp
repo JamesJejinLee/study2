@@ -23,14 +23,13 @@
 	 <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 	 <script src=<%=request.getContextPath()%>/jquery/3.3.1/jquery.min.js"></script>
   </head>
-<body>
 
-<div class = "container">
-<body>
-		<div class = "row">
-			${message}
-			<a href = "memberList.do"><button type = "submit" class = "btn btn-sm btn-success">목록</button></a>
-		</div>	
-
-</body>
+	<div class = "container">
+		<body>
+				<div class = "row">
+					${message}
+					<a href = "memberList.do"><button type = "submit" class = "btn btn-sm btn-success">목록</button></a>
+				</div>	
+		</body>
+	</div>
 </html>

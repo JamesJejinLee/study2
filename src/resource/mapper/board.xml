@@ -47,7 +47,7 @@
 						, bo_reg_date	       
 						, bo_mod_date	       
 					FROM tb_board
-					<include refid = "boardListWhereClause"/>
+			<include refid = "boardListWhereClause"/>
 							       
 		  <include refid = "common.postPaging"/>
   	</select>
@@ -66,6 +66,9 @@
 		WHERE bo_no = #{bo_no} 
   	</select>
   	<insert id = "insertBoard" parameterType = "Board">
+  		<selectKey keyProperty = "bo_no" order = "BEFORE" resultType = "int">
+  			SELECT seq_board.nextval FROM dual
+  		</selectKey>
   		insert into tb_board		                                
 			(	bo_no			                                   
 			  , bo_title		                                   
@@ -77,7 +80,7 @@
 		    , bo_read_cnt	                              
 		    , bo_reg_date	                              
 		    , bo_mod_date )                                    
-		VALUES (seq_board.nextval, #{bo_title}, #{bo_writer}, #{bo_passwd} ,#{bo_email} 
+		VALUES (#{bo_no}, #{bo_title}, #{bo_writer}, #{bo_passwd} ,#{bo_email} 
 		,#{bo_content} ,#{bo_ip} , 0 ,sysdate, sysdate)
   	</insert>
   	<update id = "updateBoard" parameterType = "Board">

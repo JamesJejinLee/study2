@@ -15,9 +15,16 @@
     <script src="js/bootstrap.min.js"></script> 
   </head>
   <body>
+  		<div class = "row text-center">
+  			<div class = "alert alert-info col-md-4 col-md-offset-4">
+		  		${message}
+  			</div>
+  		</div>
 		<div class = "row">
-			${message}
-			<a href = "boardList.do"><button type = "submit" class = "btn btn-sm btn-success">목록</button></a>
+			<div class = "col-md-6 col-xs-4">
+				<a href = "boardList.do"><button type = "submit" class = "btn btn-sm btn-success">목록</button></a>
+				<a href = "boardView.do?bo_no=${board.bo_no}"><button type = "submit" class = "btn btn-sm btn-success">글 보기</button></a>
+			</div>
 		</div>	
   </body>
 </html>

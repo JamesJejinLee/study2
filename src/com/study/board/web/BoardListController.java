@@ -35,11 +35,11 @@ public class BoardListController implements IController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		//boardSearch - Searchword, listSize? 같은 것들이 4개를 request에 담아준다.
 		boardSearch.setting(boardService.getBoardCount(boardSearch));;
 		List<Board> list = boardService.getBoardList(boardSearch);
 		request.setAttribute("list", list);
-		request.setAttribute("board", boardSearch);  
+		request.setAttribute("search", boardSearch);  
 		String viewPage = "/WEB-INF/view/board/boardList.jsp";
 		return viewPage;
 	}

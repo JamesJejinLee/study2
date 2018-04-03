@@ -11,6 +11,10 @@ public class Board {
 	private int bo_read_cnt;
 	private String bo_reg_date= "";
 	private String bo_mod_date= "";
+
+	//파일   board는 1개 fileList는 4,5개!!!!!
+	//private List<Member> fileList ;
+	
 	
 	public int getBo_no() {
 		return bo_no;
@@ -72,7 +76,5 @@ public class Board {
 	public void setBo_mod_date(String bo_mod_date) {
 		this.bo_mod_date = bo_mod_date;
 	}
-	
-	
 	
 }
