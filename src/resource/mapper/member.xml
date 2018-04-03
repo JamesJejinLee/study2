@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- //resource/mapper/member.xml -->
+<!-- getmemberlist를 실행하고 Member 자료형에 담을 것이다. -->
+
+<!--// 네임스페이스는 다른 매펄(MemberDao 이런 클래스들을 말함)와 구분,
+	// 명칭은 아무렇게나 해도 되지만.           
+	// 권장 명칭은 해당 dao의 완전한 이름으로 한다. -->
+
+<mapper namespace="com.study.member.dao.IMemberDao">
+  <select id="getMemberList" 
+  			resultType = "Member" >
+	  	SELECT	                                         
+				mem_id	                              
+			,	mem_name                          
+			,	mem_pwd                              
+			,	mem_phone                          
+			,	mem_email                          
+			,	TO_CHAR(reg_date, 'YYYY/MM/DD') AS reg_date 
+		FROM tb_member                              
+  </select>
+  <!-- 자료형이 String 일때는 변수 선언은 알아서 처리!! -->
+  <select id = "getMember"
+  				parameterType = "String"
+  				resultType = "Member">
+	  	SELECT	                                         
+				mem_id	                              
+			,	mem_name                          
+			,	mem_pwd                              
+			,	mem_phone                          
+			,	mem_email                          
+			,	TO_CHAR(reg_date, 'YYYY/MM/DD') AS reg_date 
+		FROM tb_member   
+	   WHERE mem_id = #{mem_id}
+  </select>
+  
+  <!-- 자료형이 com.study.member.vo.Member인 경우에는 꼭 빈 클래스에 있는 변수 이름을 써서 #{}를 써야 한다. -->
+  <update id = "updateMember" parameterType = "Member">
+  		UPDATE tb_member         
+		SET mem_name = #{mem_name}        
+		, 	 mem_phone = #{mem_phone}     
+		, 	 mem_email = #{mem_email}      
+		WHERE mem_id = #{mem_id}            
+  </update>
+  
+  <insert id = "insertMember" parameterType = "Member">
+  		 INSERT INTO tb_member(mem_id, mem_name, mem_pwd, mem_phone, mem_email, reg_date)    
+			VALUES(#{mem_id}, #{mem_name}, #{mem_pwd}, #{mem_phone}, #{mem_email}, sysdate)                                                  
+  </insert>
+</mapper>
